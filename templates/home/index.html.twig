@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+<section class="relative flex flex-col justify-center min-h-screen w-full overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center"
+         style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1400');">
+    </div>
+    <div class="absolute inset-0 bg-gray-950/75"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-10 py-16 w-full">
+        <p class="text-blue-400 text-sm font-medium mb-3 tracking-widest uppercase">Bonjour, je suis</p>
+        <h1 class="text-5xl font-bold text-white mb-4">Matthieu</h1>
+        <h2 class="text-2xl text-blue-300 mb-6">Infographiste & Développeur Web</h2>
+        <p class="text-gray-300 max-w-xl leading-relaxed mb-8">
+            Créatif et technique, je conçois des interfaces soignées et développe des applications web robustes.
+        </p>
+        <div class="flex gap-4">
+            <a href="{{ path('app_projects') }}" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg transition">
+                Voir mes projets
+            </a>
+            <a href="{{ path('app_contact') }}" class="border border-blue-500 hover:border-blue-300 text-blue-300 px-6 py-3 rounded-lg transition">
+                Me contacter
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
