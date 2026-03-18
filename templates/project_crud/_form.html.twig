@@ -1,0 +1,48 @@
+{#
+{{ form_start(form) }}
+  {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+#}
+
+{{ form_start(form) }}
+
+    <div class="space-y-6">
+
+        <div>
+            {{ form_label(form.title, 'Titre', {'label_attr': {'class': 'block text-gray-400 text-sm mb-2'}}) }}
+            {{ form_widget(form.title, {'attr': {'class': 'w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition'}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.description, 'Description', {'label_attr': {'class': 'block text-gray-400 text-sm mb-2'}}) }}
+            {{ form_widget(form.description, {'attr': {'class': 'w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition'}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.tags, 'Tags', {'label_attr': {'class': 'block text-gray-400 text-sm mb-2'}}) }}
+            {{ form_widget(form.tags, {'attr': {'class': 'w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition'}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.imageUrl, 'Image URL', {'label_attr': {'class': 'block text-gray-400 text-sm mb-2'}}) }}
+            {{ form_widget(form.imageUrl, {'attr': {'class': 'w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition'}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.projectUrl, 'URL du projet', {'label_attr': {'class': 'block text-gray-400 text-sm mb-2'}}) }}
+            {{ form_widget(form.projectUrl, {'attr': {'class': 'w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition'}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.createdAt, 'Date de création', {'label_attr': {'class': 'block text-gray-400 text-sm mb-2'}}) }}
+            {{ form_widget(form.createdAt, {'attr': {'class': 'bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition'}}) }}
+        </div>
+
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-lg transition font-medium">
+            {{ button_label|default('Enregistrer') }}
+        </button>
+
+    </div>
+
+{{ form_end(form) }}

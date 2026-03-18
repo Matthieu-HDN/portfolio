@@ -61,14 +61,14 @@ class Project
         return $this;
     }
 
-    public function getString(): ?string
+    public function getTags(): ?string
     {
-        return $this->string;
+        return $this->tags;
     }
 
-    public function setString(string $string): static
+    public function setTags(string $tags): static
     {
-        $this->string = $string;
+        $this->tags = $tags;
 
         return $this;
     }
