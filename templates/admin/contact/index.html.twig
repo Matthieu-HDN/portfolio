@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messages reçus{% endblock %}
+
+{% block body %}
+<div class="max-w-5xl mx-auto px-6 py-16">
+
+    <h1 class="text-4xl font-bold text-white mb-2">Messages reçus</h1>
+    <p class="text-blue-400 mb-12 tracking-widest uppercase text-sm">Administration</p>
+
+    <form method="post" action="{{ path('app_contact_admin_bulk_delete') }}" id="bulk-form">
+        <div class="flex justify-between items-center mb-4">
+            <label class="flex items-center gap-2 text-gray-400 text-sm cursor-pointer">
+                <input type="checkbox" id="select-all" class="accent-blue-500">
+                Tout sélectionner
+            </label>
+            <button type="submit"
+                    onclick="return confirm('Supprimer les messages sélectionnés ?')"
+                    class="bg-red-800 hover:bg-red-700 text-red-200 text-sm px-4 py-2 rounded-lg transition">
+                Supprimer la sélection
+            </button>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="border-b border-gray-800 text-gray-500 uppercase text-xs tracking-widest">
+                        <th class="px-4 py-3 text-left w-8"></th>
+                        <th class="px-4 py-3 text-left">Nom</th>
+                        <th class="px-4 py-3 text-left">Email</th>
+                        <th class="px-4 py-3 text-left">Message</th>
+                        <th class="px-4 py-3 text-left">Date</th>
+                        <th class="px-4 py-3 text-left">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for contact in contacts %}
+                    <tr class="border-b border-gray-800 hover:bg-gray-800 transition">
+                        <td class="px-4 py-3">
+                            <input type="checkbox" name="ids[]" value="{{ contact.id }}" class="accent-blue-500 bulk-checkbox">
+                        </td>
+                        <td class="px-4 py-3 text-gray-300">{{ contact.name }}</td>
+                        <td class="px-4 py-3 text-gray-400">{{ contact.email }}</td>
+                        <td class="px-4 py-3 text-gray-400 max-w-xs truncate">{{ contact.message }}</td>
+                        <td class="px-4 py-3 text-gray-500">{{ contact.sentAt ? contact.sentAt|date('d/m/Y H:i') : '' }}</td>
+                        <td class="px-4 py-3 flex gap-2">
+                            <a href="{{ path('app_contact_admin_show', {'id': contact.id}) }}"
+                            class="text-blue-400 hover:text-blue-300 transition text-xs">Voir</a>
+                            <a href="{{ path('app_contact_admin_delete', {'id': contact.id}) }}"
+                            onclick="return confirm('Supprimer ce message ?')"
+                            class="text-red-400 hover:text-red-300 transition text-xs">Supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="px-4 py-8 text-center text-gray-600">Aucun message reçu.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </form>
+
+</div>
+
+<script>
+document.getElementById('select-all').addEventListener('change', function() {
+    document.querySelectorAll('.bulk-checkbox').forEach(cb => cb.checked = this.checked);
+});
+</script>
+{% endblock %}
