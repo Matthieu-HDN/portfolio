@@ -1,0 +1,26 @@
+{{ form_start(form) }}
+
+    <div class="space-y-6">
+
+        <div>
+            {{ form_label(form.name, 'Nom', {'label_attr': {'class': 'block text-gray-400 text-sm mb-2'}}) }}
+            {{ form_widget(form.name, {'attr': {'class': 'w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition'}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.category, 'Catégorie', {'label_attr': {'class': 'block text-gray-400 text-sm mb-2'}}) }}
+            {{ form_widget(form.category, {'attr': {'class': 'w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition'}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.level, 'Niveau (0-100)', {'label_attr': {'class': 'block text-gray-400 text-sm mb-2'}}) }}
+            {{ form_widget(form.level, {'attr': {'class': 'w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition'}}) }}
+        </div>
+
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-lg transition font-medium">
+            {{ button_label|default('Enregistrer') }}
+        </button>
+
+    </div>
+
+{{ form_end(form) }}
