@@ -10,28 +10,25 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
+        {% for category, skills in skillsByCategory %}
         <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
-            <h2 class="text-blue-400 font-medium mb-4 uppercase text-sm tracking-widest">Développement</h2>
-            <ul class="space-y-2 text-gray-300">
-                <li>PHP / Symfony</li>
-                <li>HTML / CSS</li>
-                <li>JavaScript ES6+</li>
-                <li>Tailwind CSS</li>
-                <li>MySQL / Doctrine</li>
-                <li>Git / GitHub</li>
-            </ul>
+            <h2 class="text-blue-400 font-medium mb-6 uppercase text-sm tracking-widest">{{ category }}</h2>
+            <div class="space-y-4">
+                {% for skill in skills %}
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span class="text-gray-300">{{ skill.name }}</span>
+                        <span class="text-gray-500">{{ skill.level }}%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-1.5">
+                        <div class="bg-blue-500 h-1.5 rounded-full transition-all"
+                             style="width: {{ skill.level }}%"></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-
-        <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
-            <h2 class="text-blue-400 font-medium mb-4 uppercase text-sm tracking-widest">Infographie</h2>
-            <ul class="space-y-2 text-gray-300">
-                <li>Adobe Photoshop</li>
-                <li>Adobe Illustrator</li>
-                <li>Adobe InDesign</li>
-                <li>UI / Mise en page</li>
-                <li>Identité visuelle</li>
-            </ul>
-        </div>
+        {% endfor %}
 
     </div>
 </div>
