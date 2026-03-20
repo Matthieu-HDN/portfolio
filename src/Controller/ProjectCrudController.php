@@ -11,10 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/project/admin')]
+#[Route('/projet/admin')]
 final class ProjectCrudController extends AbstractController
 {
-    #[Route('/projet/admin', name: 'app_project_crud_index', methods: ['GET'])]
+    #[Route('', name: 'app_project_crud_index', methods: ['GET'])]
     public function index(ProjectRepository $projectRepository): Response
     {
         return $this->render('admin/project/index.html.twig', [
