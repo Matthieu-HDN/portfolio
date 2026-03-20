@@ -11,13 +11,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/project/crud')]
+#[Route('/project/admin')]
 final class ProjectCrudController extends AbstractController
 {
-    #[Route(name: 'app_project_crud_index', methods: ['GET'])]
+    #[Route('/projet/admin', name: 'app_project_crud_index', methods: ['GET'])]
     public function index(ProjectRepository $projectRepository): Response
     {
-        return $this->render('project_crud/index.html.twig', [
+        return $this->render('admin/project/index.html.twig', [
             'projects' => $projectRepository->findAll(),
         ]);
     }
@@ -36,7 +36,7 @@ final class ProjectCrudController extends AbstractController
             return $this->redirectToRoute('app_project_crud_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('project_crud/new.html.twig', [
+        return $this->render('admin/project/new.html.twig', [
             'project' => $project,
             'form' => $form,
         ]);
@@ -45,7 +45,7 @@ final class ProjectCrudController extends AbstractController
     #[Route('/{id}', name: 'app_project_crud_show', methods: ['GET'])]
     public function show(Project $project): Response
     {
-        return $this->render('project_crud/show.html.twig', [
+        return $this->render('admin/project/show.html.twig', [
             'project' => $project,
         ]);
     }
@@ -62,7 +62,7 @@ final class ProjectCrudController extends AbstractController
             return $this->redirectToRoute('app_project_crud_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('project_crud/edit.html.twig', [
+        return $this->render('admin/project/edit.html.twig', [
             'project' => $project,
             'form' => $form,
         ]);

@@ -14,7 +14,7 @@ class ProjectsController extends AbstractController
     {
         $projects = $projectRepository->findAll();
 
-        return $this->render('projects/index.html.twig', [
+        return $this->render('public/projects/index.html.twig', [
             'projects' => $projects,
         ]);
     }
