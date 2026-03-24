@@ -7,7 +7,7 @@
     <!--<script src="https://cdn.tailwindcss.com"></script>-->
     <link rel="stylesheet" href="/styles/app.css">
 </head>
-<body class="bg-gray-950 text-gray-100 min-h-screen" >
+<body class="text-gray-100" style="background-color: oklch(0.13 0.028 261.692); min-height: 100vh; display: flex; flex-direction: column;">
 
     <nav class="fixed top-0 w-full bg-gray-900 border-b border-gray-800 z-50">
         <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -20,12 +20,12 @@
         </div>
     </nav>
 
-    <main class="pt-16">
+    <main class="pt-16" style="flex: 1;">
         {% block body %}{% endblock %}
     </main>
 
-   <footer class="w-full border-t border-gray-800 mt-16" style="background-color: oklch(0.11 0.02 260.07); padding-top: 2.5rem; padding-bottom: 2.5rem;">
-        <div class="max-w-5xl mx-auto px-6 py-10">
+   <footer class="w-full mt-16" style="background-color: oklch(0.11 0.02 260.07); padding-top: 1.2rem; padding-bottom: 1.2rem;">
+        <div class="max-w-5xl mx-auto px-6 py-4">
 
             <div class="flex justify-between items-start">
                 <a href="{{ path('app_home') }}" class="font-bold text-white text-lg tracking-wide">Matthieu</a>
