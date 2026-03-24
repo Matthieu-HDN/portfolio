@@ -13,6 +13,11 @@
         {{ message }}
     </div>
     {% endfor %}
+    {% for message in app.flashes('error') %}
+    <div class="bg-red-900 border border-red-500 text-red-300 rounded-lg px-4 py-3 mb-6">
+        {{ message }}
+    </div>
+    {% endfor %}
 
     {{ form_start(form) }}
     <div class="space-y-6">
