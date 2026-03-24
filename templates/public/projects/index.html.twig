@@ -18,7 +18,9 @@
                      class="w-full h-full object-cover">
             </div>
             <div class="p-5">
-                <h2 class="text-white font-medium mb-2">{{ project.title }}</h2>
+                <a href="{{ path('app_project_show', {'id': project.id}) }}" class="text-white font-medium mb-2 hover:text-blue-400 transition block">
+                    {{ project.title }}
+                </a>
                 <p class="text-gray-400 text-sm mb-4">{{ project.description }}</p>
                 <div class="flex flex-wrap gap-2">
                     {% for tag in project.tags|split(',') %}
