@@ -1,39 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Skill index{% endblock %}
+{% block title %}Compétences — Admin{% endblock %}
 
 {% block body %}
-    <h1>Skill index</h1>
+<div class="max-w-5xl mx-auto px-6 py-16">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Level</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for skill in skills %}
-            <tr>
-                <td>{{ skill.id }}</td>
-                <td>{{ skill.name }}</td>
-                <td>{{ skill.category }}</td>
-                <td>{{ skill.level }}</td>
-                <td>
-                    <a href="{{ path('app_skill_show', {'id': skill.id}) }}">show</a>
-                    <a href="{{ path('app_skill_edit', {'id': skill.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="flex justify-between items-center mb-2">
+        <div>
+            <p class="text-blue-400 text-sm uppercase tracking-widest mb-1">Administration</p>
+            <h1 class="text-4xl font-bold text-white">Compétences</h1>
+        </div>
+        <div class="flex gap-3">
+            <a href="{{ path('app_dashboard') }}" 
+               class="border border-gray-700 hover:border-gray-500 text-gray-400 hover:text-white px-4 py-2 rounded-lg text-sm transition">
+                ← Dashboard
+            </a>
+            <a href="{{ path('app_skill_new') }}" 
+               class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm transition">
+                + Nouvelle compétence
+            </a>
+        </div>
+    </div>
 
-    <a href="{{ path('app_skill_new') }}">Create new</a>
+    <p class="text-gray-600 text-sm mb-10">{{ skills|length }} compétence{{ skills|length > 1 ? 's' : '' }}</p>
+
+    <div class="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+        <table class="w-full text-sm">
+            <thead>
+                <tr class="border-b border-gray-800 text-gray-500 uppercase text-xs tracking-widest">
+                    <th class="px-4 py-3 text-left">Nom</th>
+                    <th class="px-4 py-3 text-left">Catégorie</th>
+                    <th class="px-4 py-3 text-left">Niveau</th>
+                    <th class="px-4 py-3 text-left">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for skill in skills %}
+                <tr class="border-b border-gray-800 hover:bg-gray-800 transition">
+                    <td class="px-4 py-3 text-white font-medium">{{ skill.name }}</td>
+                    <td class="px-4 py-3 text-gray-400">{{ skill.category }}</td>
+                    <td class="px-4 py-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-24 bg-gray-800 rounded-full h-1.5">
+                                <div class="bg-blue-500 h-1.5 rounded-full" style="width: {{ skill.level }}%"></div>
+                            </div>
+                            <span class="text-gray-500 text-xs">{{ skill.level }}%</span>
+                        </div>
+                    </td>
+                    <td class="px-4 py-3 flex gap-3">
+                        <a href="{{ path('app_skill_edit', {'id': skill.id}) }}" 
+                           class="text-blue-400 hover:text-blue-300 transition text-xs">Éditer</a>
+                        <a href="{{ path('app_skill_delete', {'id': skill.id}) }}"
+                           onclick="return confirm('Supprimer cette compétence ?')"
+                           class="text-red-400 hover:text-red-300 transition text-xs">Supprimer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4" class="px-4 py-8 text-center text-gray-600">Aucune compétence.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
 {% endblock %}
