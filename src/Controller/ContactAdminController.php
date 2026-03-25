@@ -68,7 +68,7 @@ final class ContactAdminController extends AbstractController
         ]);
     }
 
-    #[Route('/contact/admin/{id}', name: 'app_contact_admin_delete', methods: ['GET', 'POST'])]
+    #[Route('/{id}', name: 'app_contact_admin_delete', methods: ['GET', 'POST'])]
     public function delete(Request $request, Contact $contact, EntityManagerInterface $em): Response
     {
         $em->remove($contact);
@@ -77,7 +77,7 @@ final class ContactAdminController extends AbstractController
         return $this->redirectToRoute('app_contact_admin_index');
     }
 
-    #[Route('/contact/admin/bulk-delete', name: 'app_contact_admin_bulk_delete', methods: ['POST'])]
+    #[Route('/bulk-delete', name: 'app_contact_admin_bulk_delete', methods: ['POST'])]
     public function bulkDelete(Request $request, EntityManagerInterface $em, ContactRepository $contactRepository): Response
     {
     $ids = $request->request->all('ids');

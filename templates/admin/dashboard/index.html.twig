@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block body %}
+<div class="max-w-5xl mx-auto px-6 py-16">
+
+    <p class="text-blue-400 text-sm font-medium mb-3 tracking-widest uppercase">Administration</p>
+    <h1 class="text-4xl font-bold text-white mb-12">Tableau de bord</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+        <a href="{{ path('app_project_crud_index') }}" 
+           class="bg-gray-900 border border-gray-800 hover:border-blue-500 rounded-xl p-6 transition">
+            <p class="text-blue-400 text-sm uppercase tracking-widest mb-2">Projets</p>
+            <p class="text-5xl font-bold text-white mb-1">{{ projectCount }}</p>
+            <p class="text-gray-500 text-sm">Gérer les projets →</p>
+        </a>
+
+        <a href="{{ path('app_skill_index') }}" 
+           class="bg-gray-900 border border-gray-800 hover:border-blue-500 rounded-xl p-6 transition">
+            <p class="text-blue-400 text-sm uppercase tracking-widest mb-2">Compétences</p>
+            <p class="text-5xl font-bold text-white mb-1">{{ skillCount }}</p>
+            <p class="text-gray-500 text-sm">Gérer les compétences →</p>
+        </a>
+
+        <a href="{{ path('app_contact_admin_index') }}" 
+           class="bg-gray-900 border border-gray-800 hover:border-blue-500 rounded-xl p-6 transition">
+            <p class="text-blue-400 text-sm uppercase tracking-widest mb-2">Messages</p>
+            <p class="text-5xl font-bold text-white mb-1">{{ messageCount }}</p>
+            <p class="text-gray-500 text-sm">Voir les messages →</p>
+        </a>
+
+    </div>
+
+    <a href="{{ path('app_logout') }}" 
+       class="text-gray-500 hover:text-red-400 text-sm transition">
+        Se déconnecter
+    </a>
+
+</div>
+{% endblock %}

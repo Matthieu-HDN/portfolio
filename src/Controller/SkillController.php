@@ -11,10 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/skill')]
+#[Route('/competence/admin')]
 final class SkillController extends AbstractController
 {
-    #[Route(name: 'app_skill_index', methods: ['GET'])]
+    #[Route('', name: 'app_skill_index', methods: ['GET'])]
     public function index(SkillRepository $skillRepository): Response
     {
         return $this->render('admin/skill/index.html.twig', [
