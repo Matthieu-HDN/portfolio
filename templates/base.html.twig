@@ -16,6 +16,10 @@
                 <li><a href="{{ path('app_projects') }}" class="hover:text-white transition">Projets</a></li>
                 <li><a href="{{ path('app_skills') }}" class="hover:text-white transition">Compétences</a></li>
                 <li><a href="{{ path('app_contact') }}" class="hover:text-white transition">Contact</a></li>
+                {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="{{ path('app_dashboard') }}" class="text-blue-400 hover:text-blue-300 transition">Admin</a></li>
+                <li><a href="{{ path('app_logout') }}" class="text-red-400 hover:text-red-300 transition">Déconnexion</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
