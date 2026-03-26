@@ -1,13 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Project{% endblock %}
+{% block title %}Éditer le projet{% endblock %}
 
 {% block body %}
-    <h1>Edit Project</h1>
+<div class="max-w-5xl mx-auto px-6 py-16">
 
-    {{ include('project_crud/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="flex justify-between items-center mb-10">
+        <div>
+            <p class="text-blue-400 text-sm uppercase tracking-widest mb-1">Administration</p>
+            <h1 class="text-4xl font-bold text-white">Éditer le projet</h1>
+        </div>
+        <div class="flex gap-3">
+            {{ include('admin/project/_delete_form.html.twig') }}
+            <a href="{{ path('app_project_crud_index') }}" 
+            class="border border-gray-700 hover:border-gray-500 text-gray-400 hover:text-white px-4 py-2 rounded-lg text-sm transition">
+                ← Retour
+            </a>
+        </div>
+    </div>
 
-    <a href="{{ path('app_project_crud_index') }}">back to list</a>
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-8">
+        {{ include('admin/project/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    </div>
 
-    {{ include('project_crud/_delete_form.html.twig') }}
+</div>
 {% endblock %}
