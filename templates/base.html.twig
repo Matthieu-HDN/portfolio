@@ -7,8 +7,21 @@
     <!--<script src="https://cdn.tailwindcss.com"></script>-->
     <link rel="stylesheet" href="/styles/app.css">
 </head>
-<body class="text-gray-100" style="background-color: oklch(0.13 0.028 261.692); min-height: 100vh; display: flex; flex-direction: column;">
+<body class="text-gray-100 {% block body_class %}{% endblock %}" style="background-color: oklch(0.13 0.028 261.692); min-height: 100vh; display: flex; flex-direction: column;">
 
+    <!-- Loader -->
+    <div id="page-loader" class="fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-400" style="background-color: oklch(0.13 0.028 261.692);">
+        <div class="flex flex-col items-center gap-4">
+            <svg class="w-12 h-12 animate-spin text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+            </svg>
+            <span class="text-blue-400 text-sm tracking-widest uppercase">Chargement</span>
+        </div>
+    </div>
+
+    <!-- Overlay transition -->
+    <div id="page-transition" class="fixed inset-0 z-40" style="background-color: oklch(0.11 0.02 260.07);"></div>
     <nav class="fixed top-0 w-full bg-gray-900 border-b border-gray-800 z-50">
         <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="{{ path('app_home') }}" class="font-bold text-white text-lg">Matthieu</a>
@@ -45,6 +58,6 @@
 
         </div>
     </footer>
-
+    <script src="/js/transitions.js"></script>
 </body>
 </html>

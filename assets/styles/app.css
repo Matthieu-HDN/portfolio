@@ -2,3 +2,23 @@
 body {
   background-color: theme(--color-gray-950);
 }
+
+#page-transition {
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+#page-transition.loaded {
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
