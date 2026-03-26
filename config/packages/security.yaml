@@ -39,6 +39,7 @@ security:
     - { path: ^/projet/admin, roles: ROLE_ADMIN }
     - { path: ^/competence/admin, roles: ROLE_ADMIN }
     - { path: ^/contact/admin, roles: ROLE_ADMIN }
+    - { path: ^/admin/media, roles: ROLE_ADMIN }
 
 when@test:
   security:
