@@ -24,7 +24,9 @@
     <div id="page-transition" class="fixed inset-0 z-40" style="background-color: oklch(0.11 0.02 260.07);"></div>
     <nav class="fixed top-0 w-full bg-gray-900 border-b border-gray-800 z-50">
         <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="{{ path('app_home') }}" class="font-bold text-white text-lg">Matthieu</a>
+            <a href="{{ path('app_home') }}" class="flex items-center">
+                <img src="{{ asset('uploads/media/logo-studio-mh.png') }}" alt="Studio MH" class="h-8 w-auto">
+            </a>
             <ul class="flex gap-6 text-sm text-gray-400">
                 <li><a href="{{ path('app_projects') }}" class="hover:text-white transition">Projets</a></li>
                 <li><a href="{{ path('app_skills') }}" class="hover:text-white transition">Compétences</a></li>
