@@ -27,8 +27,8 @@ class ContactController extends AbstractController
             $em->flush();
 
             $email = (new Email())
-                ->from('portfolio@localhost.com')
-                ->to('matthieu@localhost.com')
+                ->from('contact@studio-mh.fr')
+                ->to('contact@studio-mh.fr')
                 ->subject('Nouveau message de ' . $contact->getName())
                 ->html('
                     <h2>Nouveau message reçu</h2>
