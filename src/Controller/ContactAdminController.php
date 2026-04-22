@@ -74,6 +74,8 @@ final class ContactAdminController extends AbstractController
         $em->remove($contact);
         $em->flush();
 
+        $this->addFlash('success', 'Message supprimé.');
+
         return $this->redirectToRoute('app_contact_admin_index');
     }
 

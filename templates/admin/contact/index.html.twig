@@ -67,6 +67,12 @@
 
 </div>
 
+{% for message in app.flashes('success') %}
+<div class="bg-blue-900 border border-blue-500 text-blue-300 rounded-lg px-4 py-3 mb-6">
+    {{ message }}
+</div>
+{% endfor %}
+
 <script>
 document.getElementById('select-all').addEventListener('change', function() {
     document.querySelectorAll('.bulk-checkbox').forEach(cb => cb.checked = this.checked);
