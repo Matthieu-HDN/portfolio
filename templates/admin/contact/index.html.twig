@@ -20,11 +20,17 @@
                 <input type="checkbox" id="select-all" class="accent-blue-500">
                 Tout sélectionner
             </label>
-            <button type="submit"
-                    onclick="return confirm('Supprimer les messages sélectionnés ?')"
-                    class="bg-red-800 hover:bg-red-700 text-red-200 text-sm px-4 py-2 rounded-lg transition">
-                Supprimer la sélection
-            </button>
+            <div class="flex gap-3">
+                <a href="{{ path('app_dashboard') }}"
+                    class="border border-gray-700 hover:border-gray-500 text-gray-400 hover:text-white px-4 py-2 rounded-lg text-sm transition">
+                    ← Dashboard
+                </a>
+                <button type="submit"
+                        onclick="return confirm('Supprimer les messages sélectionnés ?')"
+                        class="bg-red-800 hover:bg-red-700 text-red-200 text-sm px-4 py-2 rounded-lg transition">
+                    Supprimer la sélection
+                </button>
+            </div>
         </div>
 
         <div class="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
