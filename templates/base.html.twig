@@ -55,7 +55,7 @@
         </div>
 
         <!-- Menu mobile -->
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-800 px-6 py-4">
+        <div id="mobile-menu" class="md:hidden bg-gray-900 border-t border-gray-800 px-6 py-4">
             <ul class="flex flex-col gap-4 text-sm text-gray-400">
                 <li><a href="{{ path('app_projects') }}" class="hover:text-white transition block">Projets</a></li>
                 <li><a href="{{ path('app_skills') }}" class="hover:text-white transition block">Compétences</a></li>
@@ -69,14 +69,14 @@
     </nav>
 
     <script>
-    document.getElementById('burger').addEventListener('click', function() {
-        const menu = document.getElementById('mobile-menu');
-        const burgerIcon = document.getElementById('burger-icon');
-        const closeIcon = document.getElementById('close-icon');
-        menu.classList.toggle('hidden');
-        burgerIcon.classList.toggle('hidden');
-        closeIcon.classList.toggle('hidden');
-    });
+        document.getElementById('burger').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            const burgerIcon = document.getElementById('burger-icon');
+            const closeIcon = document.getElementById('close-icon');
+            menu.classList.toggle('open');
+            burgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
     </script>
 
     <main class="pt-16" style="flex: 1;">
