@@ -26,10 +26,13 @@
     <div id="page-transition" class="fixed inset-0 z-40" style="background-color: oklch(0.11 0.02 260.07);"></div>
     <nav class="fixed top-0 w-full bg-gray-900 border-b border-gray-800 z-50">
         <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="{{ path('app_home') }}" class="flex items-center">
-                <img src="{{ asset('uploads/media/logo-studio-mh.png') }}" alt="Studio MH" class="h-8 w-auto">
+            
+            <a href="{{ path('app_home') }}">
+                <img src="/uploads/media/logo-studio-mh.png" alt="Studio MH" class="h-8">
             </a>
-            <ul class="flex gap-6 text-sm text-gray-400 font-light tracking-wide">
+
+            <!-- Menu desktop -->
+            <ul class="hidden md:flex gap-6 text-sm text-gray-400">
                 <li><a href="{{ path('app_projects') }}" class="hover:text-white transition">Projets</a></li>
                 <li><a href="{{ path('app_skills') }}" class="hover:text-white transition">Compétences</a></li>
                 <li><a href="{{ path('app_contact') }}" class="hover:text-white transition">Contact</a></li>
@@ -38,8 +41,43 @@
                 <li><a href="{{ path('app_logout') }}" class="text-red-400 hover:text-red-300 transition">Déconnexion</a></li>
                 {% endif %}
             </ul>
+
+            <!-- Burger mobile -->
+            <button id="burger" class="md:hidden text-gray-400 hover:text-white transition">
+                <svg id="burger-icon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+
+        </div>
+
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-800 px-6 py-4">
+            <ul class="flex flex-col gap-4 text-sm text-gray-400">
+                <li><a href="{{ path('app_projects') }}" class="hover:text-white transition block">Projets</a></li>
+                <li><a href="{{ path('app_skills') }}" class="hover:text-white transition block">Compétences</a></li>
+                <li><a href="{{ path('app_contact') }}" class="hover:text-white transition block">Contact</a></li>
+                {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="{{ path('app_dashboard') }}" class="text-blue-400 hover:text-blue-300 transition block">Admin</a></li>
+                <li><a href="{{ path('app_logout') }}" class="text-red-400 hover:text-red-300 transition block">Déconnexion</a></li>
+                {% endif %}
+            </ul>
         </div>
     </nav>
+
+    <script>
+    document.getElementById('burger').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        const burgerIcon = document.getElementById('burger-icon');
+        const closeIcon = document.getElementById('close-icon');
+        menu.classList.toggle('hidden');
+        burgerIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+    });
+    </script>
 
     <main class="pt-16" style="flex: 1;">
         {% block body %}{% endblock %}
