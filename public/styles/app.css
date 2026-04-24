@@ -49,10 +49,8 @@
     --text-4xl--line-height: calc(2.5 / 2.25);
     --text-5xl: 3rem;
     --text-5xl--line-height: 1;
-    --font-weight-light: 300;
     --font-weight-medium: 500;
     --font-weight-bold: 700;
-    --tracking-wide: 0.025em;
     --tracking-widest: 0.1em;
     --leading-relaxed: 1.625;
     --radius-lg: 0.5rem;
@@ -930,6 +928,22 @@ body {
     opacity: 0;
     pointer-events: none;
   }
+}
+@media (min-width: 768px) {
+  .md\:flex {
+    display: flex;
+  }
+  .md\:hidden {
+    display: none;
+  }
+}
+#mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+#mobile-menu.open {
+  max-height: 300px;
 }
 @property --tw-space-y-reverse {
   syntax: "*";

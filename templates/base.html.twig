@@ -55,29 +55,22 @@
         </div>
 
         <!-- Menu mobile -->
-        <div id="mobile-menu" class="md:hidden bg-gray-900 border-t border-gray-800 px-6 py-4">
-            <ul class="flex flex-col gap-4 text-sm text-gray-400">
-                <li><a href="{{ path('app_projects') }}" class="hover:text-white transition block">Projets</a></li>
-                <li><a href="{{ path('app_skills') }}" class="hover:text-white transition block">Compétences</a></li>
-                <li><a href="{{ path('app_contact') }}" class="hover:text-white transition block">Contact</a></li>
-                {% if is_granted('ROLE_ADMIN') %}
-                <li><a href="{{ path('app_dashboard') }}" class="text-blue-400 hover:text-blue-300 transition block">Admin</a></li>
-                <li><a href="{{ path('app_logout') }}" class="text-red-400 hover:text-red-300 transition block">Déconnexion</a></li>
-                {% endif %}
-            </ul>
+        <div id="mobile-menu" class="md:hidden bg-gray-900 border-t border-gray-800 overflow-hidden">
+            <div class="px-6 py-4">
+                <ul class="flex flex-col gap-4 text-sm text-gray-400">
+                    <li><a href="{{ path('app_projects') }}" class="hover:text-white transition block">Projets</a></li>
+                    <li><a href="{{ path('app_skills') }}" class="hover:text-white transition block">Compétences</a></li>
+                    <li><a href="{{ path('app_contact') }}" class="hover:text-white transition block">Contact</a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href="{{ path('app_dashboard') }}" class="text-blue-400 hover:text-blue-300 transition block">Admin</a></li>
+                    <li><a href="{{ path('app_logout') }}" class="text-red-400 hover:text-red-300 transition block">Déconnexion</a></li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <script>
-        document.getElementById('burger').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            const burgerIcon = document.getElementById('burger-icon');
-            const closeIcon = document.getElementById('close-icon');
-            menu.classList.toggle('open');
-            burgerIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-        });
-    </script>
+   
 
     <main class="pt-16" style="flex: 1;">
         {% block body %}{% endblock %}
@@ -101,7 +94,17 @@
             </div>
 
         </div>
-    </footer>
+    </footer> 
+    <script>
+        document.getElementById('burger').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            const burgerIcon = document.getElementById('burger-icon');
+            const closeIcon = document.getElementById('close-icon');
+            menu.classList.toggle('open');
+            burgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+    </script>
     <script src="/js/transitions.js"></script>
 </body>
 </html>
